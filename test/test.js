@@ -1,7 +1,5 @@
 import { tokens, ether, ETHER_ADDRESS, EVM_REVERT, wait } from './helpers'
 
-const Token = artifacts.require('./Token')
-const DecentralizedBank = artifacts.require('./dBank')
 
 require('chai')
   .use(require('chai-as-promised'))

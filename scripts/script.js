@@ -1,17 +1,31 @@
-const ContractName = artifacts.require("ContractName")
+const { ethers } = require('ethers');
 
-module.exports = async function(callback) {
+// Replace the following with your contract's ABI and address
+const contractABI = [...]; // Contract's ABI (JSON format)
+const contractAddress = '0x...'; // Contract's address
+
+// Replace the following with your Ethereum node provider URL
+const providerURL = 'https://ropsten.infura.io/v3/YOUR_INFURA_PROJECT_ID';
+
+async function main() {
   try {
-    // Get Accounts
-    const accounts = await web3.eth.getAccounts()
+    // Create an ethers.js provider connected to an Ethereum node
+    const provider = new ethers.providers.JsonRpcProvider(providerURL);
 
-    // Fetch the deployed contract
-    const contract = await ContractName.deployed()
-    console.log('Contract fetched', contract.address)
-  }
-  catch(error) {
-    console.log(error)
-  }
+    // Replace the following with your wallet's private key or JSON-RPC URL if using a public node
+    const privateKey = 'YOUR_PRIVATE_KEY';
 
-  callback()
+    // Create a new signer with the private key
+    const wallet = new ethers.Wallet(privateKey, provider);
+
+    // Load the contract ABI and address into a Contract instance
+    const contract = new ethers.Contract(contractAddress, contractABI, wallet);
+
+    console.log('Contract fetched:', contract.address);
+  } catch (error) {
+    console.error(error);
+  }
 }
+
+main();
+
