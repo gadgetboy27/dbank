@@ -10,12 +10,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      web3: 'undefined',
-      account: '', // Initialize with an empty string
+      web3: "undefined",
+      account: "undefined", // Initialize with an empty string
       token: null,
       dbank: null,
       balance: 0,
       dBankAddress: null,
+      provider: "undefined",
     };
   }
 
@@ -42,14 +43,20 @@ class App extends Component {
         } else {
           window.alert("Please login with MetaMask");
         }
+        const contractAddress = prompt("Enter Token contract address:");
 
         // load contracts
         try {
           const networkId = await provider
             .getNetwork()
             .then((network) => network.chainId);
+
+          // Log statements for debugging
+          console.log("networkId:", networkId);
+
           const token = new ethers.Contract(
             Token.networks[networkId].address,
+            contractAddress,
             Token.abi,
             signer
           );
@@ -128,10 +135,10 @@ class App extends Component {
     }
   }
 
-  // Add this function outside the render method
   calculateBreakevenUnits = async () => {
     if (this.state.provider !== "undefined" && this.state.dbank !== null) {
       try {
+        // Add a modal overlay to get user input
         const loanAmount = parseFloat(prompt("Enter Loan Amount"));
         const annualInterestRate = parseFloat(
           prompt("Enter annual interest rate (in percent %):")
@@ -162,13 +169,15 @@ class App extends Component {
     }
   };
 
+  // ... other methods and render function ...
+
   render() {
     return (
       <div className="text-monospace">
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <a
             className="navbar-brand col-sm-3 col-md-2 mr-0"
-            href="http://www.dappuniversity.com/bootcamp"
+            href="http://www.iamgadetboy.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -179,7 +188,7 @@ class App extends Component {
         <div className="container-fluid mt-5 text-center">
           <br></br>
           <h1>Welcome to d₿ank</h1>
-          <h2>{this.state.account}</h2>
+          <h2 className="account-address">{this.state.account}</h2>
           <br></br>
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">

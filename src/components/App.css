@@ -1,62 +1,90 @@
 /* Styles go here */
 body {
-    background-color: #f0f0f0;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .navbar {
-    background-color: #343a40 !important;
-  }
-  
+  background-color: #f0f0f0;
+  font-family: roboto, sans-serif;
+}
+
+.navbar {
+  background-color: #343a40 !important;
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+
+.container-fluid {
+  padding-top: 60px;
+}
+
+h1,
+h2 {
+  color: #007bff;
+  font-styles: 
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.tab-content {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 200px;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.App-logo {
+  margin-right: 10px;
+}
+
+@media (max-width: 767px) {
   .navbar-brand {
-    color: #fff !important;
+    margin-right: 0;
   }
-  
-  .container-fluid {
-    padding-top: 60px;
-  }
-  
-  h1, h2 {
-    color: #007bff;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
-  
-  .tab-content {
-    margin-top: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
   .form-control {
-    width: 200px;
+    width: 100%;
   }
-  
-  .content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .App-logo {
-    margin-right: 10px;
-  }
-  
-  @media (max-width: 767px) {
-    .navbar-brand {
-      margin-right: 0;
-    }
-    .form-control {
-      width: 100%;
-    }
-  }
-  
+}
+
+.account-address {
+  max-width: 150px; /* Set the maximum width as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* New styles for modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff; /* White background for the modal */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
